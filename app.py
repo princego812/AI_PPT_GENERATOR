@@ -111,7 +111,11 @@ else:
    st.info("Give API-keys first to load the agent")
 
 #======================STEP 4:STREAMLIT NAVBARS======================
-tab1,tab2,tab3 = st.tabs(["Generate Image,Fetch news","Generate PPT"])
+tab1, tab2, tab3 = st.tabs([
+    "Generate Image",
+    "Fetch News",
+    "Generate PPT"
+])
 user_input = st.text_area("Write Prompt & click Enter")
 
 if (user_input):
@@ -124,21 +128,21 @@ if (user_input):
           img_data = r.get(url)
           st.image(url)
         except Exception as err:
-          st.error("Error Code: ",err)
+          st.error(f"Error Code: {err}")
   with tab2:
     if st.button("Fetch Latest News", key = "News-Button"):
       with st.spinner("Running Agent"):
         try:
-          prompt = f"""Give Latest News Related to Given user Query 
+          prompt = """Give Latest News Related to Given user Query 
           in Dynamic HTML , Output with cards Desgin Format.
           Strict HTML Output , No Any markdowns Response
-          User Query: {user_input}"""
+          User Query: """ + user_input
           
           response = leader_agent.invoke({'messages':[{'role':'user','content':prompt}]})
           code = response['messages'][-1].content[-1]['text']
           st.html(code, width="stretch" , unsafe_allow_javascript = True)
         except Exception as err:
-          st.error("Error Code : "err)
+          st.error(f"Error Code: {err}")
   with tab3:
     if st.button("Click to Generate PPT", key = "PPT-Button"):
       with st.spinner("Running Agent"):
@@ -152,5 +156,5 @@ if (user_input):
                                mime = 'text/html'):
              st.success("PPT Downloaded successfully!")
         except Exception as err:
-          st.error("Error Code : "err)
+          st.error(f"Error Code: {err}")
           
