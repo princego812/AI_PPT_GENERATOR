@@ -12,6 +12,8 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
+st.set_page_config(layout= "wide")
+
 #================STEP 2: LOAD ENV AND API-KEYS==================
 st.title("Agentic PPT Generator")
 st.header("""User can generate , PPT,Images, and fetch Latest news """)
@@ -110,12 +112,10 @@ else:
    st.info("Give API-keys first to load the agent")
 
 #======================STEP 4:STREAMLIT NAVBARS======================
-    tab1,tab2,tab3 = st.tabs(["Generate Image,Fetch news","Generate PPT"])
-
-
+tab1,tab2,tab3 = st.tabs(["Generate Image,Fetch news","Generate PPT"])
 user_input = st.text_area("Write Prompt & click Enter")
 
-if (user_input) & (leader_agent):
+if (user_input):
   with tab1:
     if st.button("Click to Generative Image"):
       with st.spinner("Running Agent"):
