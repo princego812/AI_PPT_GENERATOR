@@ -134,7 +134,7 @@ if (user_input):
           prompt = """Give Latest News Related to Given user Query 
           in Dynamic HTML , Output with cards Desgin Format.
           Strict HTML Output , No Any markdowns Response
-          User Query: """ user_input
+          User Query: user_input"""
           
           response = leader_agent.invoke({'messages':[{'role':'user','content':prompt}]})
           code = response['messages'][-1].content[-1]['text']
