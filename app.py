@@ -16,7 +16,7 @@ st.set_page_config(layout= "wide")
 st.title("Agentic PPT Generator")
 st.header("""User can generate , PPT,Images, and fetch Latest news """)
 
-st.sidebar("Give API KEYS ")
+st.sidebar.title("Give API KEYS")
 
 
 GOOGLE_API_KEY = st.sidebar.text_input("GOOGLE_API_KEY",type = "password")
